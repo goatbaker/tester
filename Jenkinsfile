@@ -25,7 +25,7 @@ pipeline {
     }
     stage('CheckWrite') {
       steps {
-        fileExists 'Writefile'
+        fileExists 'Writefile2'
       }
     }
   }
