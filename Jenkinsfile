@@ -15,5 +15,18 @@ pipeline {
         }
       }
     }
+    stage('Write') {
+      steps {
+        timestamps() {
+          writeFile(file: 'Test', text: 'WriteFile')
+        }
+        
+      }
+    }
+    stage('CheckWrite') {
+      steps {
+        fileExists 'Writefile'
+      }
+    }
   }
 }
