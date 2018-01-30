@@ -1,32 +1,30 @@
 pipeline {
   agent any
   stages {
-    stage('Print') {
-      parallel {
-        stage('Print') {
-          steps {
-            echo 'This is sweet'
-          }
-        }
-        stage('Print2') {
-          steps {
-            echo 'I feel alive'
-          }
-        }
-      }
-    }
-    stage('Write') {
+    stage('') {
       steps {
-        timestamps() {
-          writeFile(file: 'Test', text: 'WriteFile')
+        sh '''pipeline {
+    agent any
+
+    stages {
+        stage(\'Build\') {
+            steps {
+                echo \'Building..\'
+            }
         }
-        
-      }
+        stage(\'Test\') {
+            steps {
+                echo \'Testing..\'
+            }
+        }
+        stage(\'Deploy\') {
+            steps {
+                echo \'Deploying....\'
+            }
+        }
     }
-    stage('CheckWrite') {
-      steps {
-        fileExists 'Writefile2'
+}'''
+        }
       }
     }
   }
-}
