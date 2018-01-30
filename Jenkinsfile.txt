@@ -1,11 +1,4 @@
 pipeline {
-  agent any
-  stages {
-    stage('shell') {
-      steps {
-        sh '''#!/usr/bin/env groovy
-
-pipeline {
     agent any
 
     stages {
